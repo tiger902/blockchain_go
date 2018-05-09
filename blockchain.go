@@ -49,6 +49,11 @@ func (bc *Blockchain) MineBlock(transactions []*Transaction) {
 			log.Panic(err)
 		}
 
+		err = b.Put([]byte("1"), newBlock.Hash)
+		if err != nil {
+			log.Panic(err)
+		}
+
 		bc.tip = newBlock.Hash
 
 		return nil
