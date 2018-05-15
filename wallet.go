@@ -15,7 +15,7 @@ const version = byte(0x00)
 const walletFile = "wallet.dat"
 const addressChecksumLen = 4
 
-// Eallet stores private and public keys
+// Wallet stores private and public keys
 type Wallet struct {
 	PrivateKey ecdsa.PrivateKey
 	PublicKey  []byte
@@ -52,9 +52,9 @@ func HashPubKey(pubKey []byte) []byte {
 	if err != nil {
 		log.Panic(err)
 	}
-	publicRPEMD160 := RIPEMD160Hasher.Sum(nil)
+	publicRIPEMD160 := RIPEMD160Hasher.Sum(nil)
 
-	return publicRPEMD160
+	return publicRIPEMD160
 }
 
 // ValidateAddress check if address if valid

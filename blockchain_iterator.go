@@ -6,7 +6,7 @@ import (
 	"github.com/boltdb/bolt"
 )
 
-// BlockchainIterator is used to iterate over blockchian blocks
+// BlockchainIterator is used to iterate over blockchain blocks
 type BlockchainIterator struct {
 	currentHash []byte
 	db          *bolt.DB
@@ -18,8 +18,8 @@ func (i *BlockchainIterator) Next() *Block {
 
 	err := i.db.View(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte(blocksBucket))
-		encodeBlock := b.Get(i.currentHash)
-		block = DeserializeBlock(encodeBlock)
+		encodedBlock := b.Get(i.currentHash)
+		block = DeserializeBlock(encodedBlock)
 
 		return nil
 

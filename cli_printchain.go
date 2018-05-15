@@ -6,7 +6,7 @@ import (
 )
 
 func (cli *CLI) printChain() {
-	bc := NewBlockchain("")
+	bc := NewBlockchain()
 	defer bc.db.Close()
 
 	bci := bc.Iterator()
@@ -14,7 +14,7 @@ func (cli *CLI) printChain() {
 	for {
 		block := bci.Next()
 
-		fmt.Printf("========= Block %x ========", block.Hash)
+		fmt.Printf("========= Block %x ========\n", block.Hash)
 		fmt.Printf("Prev. block: %x\n", block.PrevBlockHash)
 		pow := NewProofOfWork(block)
 		fmt.Printf("PoW: %s\n\n", strconv.FormatBool(pow.Validate()))
